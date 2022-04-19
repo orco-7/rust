@@ -1,0 +1,37 @@
+fn main() {
+    let mut s1 = String::new();
+
+    let data = "initial contents";
+
+    s1 = data.to_string();
+
+    let mut s2 = String::new();
+
+    s2.push_str("\njust jocking\n");
+
+    let s3 = s1 + &s2;
+
+    print!("{}", s3);
+    // println!("{}", s1);
+
+    set t2 = String::from("tac");
+    let t3 = String::from("toe");
+
+    let s = format!("{}-{}-{}", t1, t2, t3);
+    println!("{}", s);
+
+    let hello = "hello";
+
+    let s = &hello[0..3];
+    println!("{}", s);
+    for c in hello.chars() {
+        println!("{}", c);
+    }
+
+    for c in hello.bytes() {
+        println!("{}", c);
+    }
+
+
+
+}
