@@ -1,0 +1,1 @@
+/home/simone/rust/minigrep/target/debug/minigrep: /home/simone/rust/minigrep/src/main.rs

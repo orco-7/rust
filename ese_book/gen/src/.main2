@@ -1,0 +1,56 @@
+struct point<T, U> {
+    x: T,
+    y: U,
+}
+
+struct Point<T> {
+    x: T,
+    y: T,
+}
+impl <T> Point<T> {
+    fn x(&self) -> &T {
+        &self.x
+    }
+    fn y(&self) -> &T {
+        &self.y
+    }
+}
+impl Point<f32> {
+    fn distance_from_0(&self) -> f32 {
+        (self.x().powi(2) + self.y().powi(2)).sqrt()
+    }
+}
+
+struct Points<X1, Y1> {
+    x: X1,
+    y: Y1,
+}
+
+impl<X1, Y1> Points<X1, Y1> {
+    fn mixup<X2, Y2>(self, other: Points<X2, Y2>) -> Points<X1, Y2> {
+        Points {
+            x: self.x,
+            y: other.y,
+        }
+    }
+}
+
+
+fn main() {
+    let float = point {x: 5.0, y: 3.0};
+    let both = point {x: 5.0, y: 3};
+
+    let new = Point { x: 0.325, y: 2.125};
+    //let new_str = Point { x: "testx", y: "testy"};
+
+    println!("x = {:?}\ny = {:?}", new.x(), new.y());
+
+    println!("The distance of the point from the origin is {}", new.distance_from_0());
+
+    let p1 = Points {x: 0.245, y: 4};
+    let p2 = Points {x: "hello", y: "down"};
+
+    let p3 = p1.mixup(p2);
+
+    println!("the new point is ({}, {})", p3.x, p3.y);
+}
