@@ -1,0 +1,43 @@
+use std::{thread, time::Duration};
+
+
+fn generate_workout(intensity: u32, rand_number: u32) {
+
+    let expensive_closure = |num| {     // can also be annoteted as | num: u32 | -> u32 {
+        // at compile time each closure is assigned a type: if the same closure is called firstly
+        // with a String, it can't be called with a u32 later
+        println!("Calculating...");
+        thread::sleep(Duration::from_secs(2));
+        num
+    };
+
+    if intensity < 25 {
+        println!(
+            "Today do {} push-ups!",
+            expensive_closure(intensity)
+        );
+
+        println!(
+            "Next do {} sit-ups",
+            expensive_closure(intensity)
+        );
+    } else {
+        if rand_number == 3 {
+            println!("Take a break today.\nRemember to stay hydrated!");
+        } else {
+            println!(
+                "Today run for {} kilometers",
+                expensive_closure(intensity)
+            );
+
+        }
+    }
+}
+
+
+fn main() {
+    let u_spec_value = 7;
+    let rand_numb = 47;
+
+    generate_workout(u_spec_value, rand_numb);
+}
